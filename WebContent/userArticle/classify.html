@@ -1,0 +1,19 @@
+<div id='lo' ng-show="loadingImg"><div><img src='img/loading29.gif'/></div><div style='margin-top:4px'>努力加载中,请稍后</div></div>
+<div class="container">
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a ng-href="#/detail/{{item.id}}">发表文章</a></li>
+		<li role="presentation"><a ng-href="#/manage">文章管理</a></li>
+		<li role="presentation" class="active"><a ng-href="#/classify">类别管理</a></li>
+		<li role="presentation"><a ng-href="#/drafts">草稿箱</a></li>
+	</ul>
+<div class="classify">
+	<form class="form-inline">
+		<div class="form-group"><input type="text"
+				class="form-control" ng-model="groupName">
+		</div>
+		<button type="button" ng-click="clickInsertGroup()" class="btn btn-info">添加分类</button>
+	</form>
+	</div>
+</div>
+
+

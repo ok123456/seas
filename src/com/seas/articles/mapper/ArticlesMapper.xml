@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.seas.articles.dao.ArticlesDao">
+
+	<select id="selectArticles" resultType="com.seas.articles.bean.Articles"
+		parameterType="string">
+		SELECT id, title, content, author, create_time, accessory, classify,
+		details FROM articles
+		<where>
+			<if test="title!=null and !''.equals(title)"> and title like'%' #{title} '%'</if>
+		</where>
+	</select>
+	<select id="queryArticles" resultType="com.seas.articles.bean.Articles"
+		parameterType="integer">
+		SELECT id, title, content, author, create_time, accessory, classify,
+		details FROM articles
+		<where>
+			id=#{id}
+		</where>
+	</select>
+
+	<delete id="deleteArticles" parameterType="integer">
+		delete from articles
+		where id=#{id}
+	</delete>
+	<insert id="insertArticles" parameterType="com.seas.articles.bean.Articles">
+		INSERT INTO articles
+		(title, content, author, create_time, accessory, classify, details)
+		VALUES
+		(#{title},#{content},#{author},now(),#{accessory},#{classify},#{details});
+	</insert>
+	<update id="updateArticles" parameterType="com.seas.articles.bean.Articles">
+		UPDATE articles
+		<set>
+			<if test="title!=null and !''.equals(title)">title=#{null},</if>
+			<if test="content!=null and !''.equals(content)">content=#{content},</if>
+			<if test="author!=null and !''.equals(author)">author=#{author},</if>
+			<if test="create_time!=null and !''.equals(create_time)">create_time=#{create_time},</if>
+			<if test="accessory!=null and !''.equals(accessory)">accessory=#{accessory},</if>
+			<if test="classify!=null and !''.equals(classify)">classify=#{classify},</if>
+			<if test="details!=null and !''.equals(details)">details=#{details},</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+</mapper>

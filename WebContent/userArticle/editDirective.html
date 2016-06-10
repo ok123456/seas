@@ -1,0 +1,27 @@
+<div class="container">
+
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="edit.html">发表文章</a></li>
+			<li role="presentation"><a href="userArticle.html#/manage">文章管理</a></li>
+			<li role="presentation"><a href="userArticle.html#/classify">类别管理</a></li>
+			<li role="presentation"><a href="userArticle.html#/drafts">草稿箱</a></li>
+		</ul>
+		<form action="articles/insert" id="formv">
+			<div class="form-group">
+				<label for="title">文章标题</label> <input type="text"
+					class="form-control" id="title" name="title" ng-model="title">
+			</div>
+			<div class="form-group">
+				<label for="editor">文章内容</label>
+				<textarea id="content" name="content" ng-model="content"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="accessory">上传文件</label> <input type="file"
+					id="accessory" multiple="multiple" ng-model="accessory">
+			</div>
+			<button type="button" id="publish" ng-click="publish()"
+				class="btn btn-default">发表</button>
+			<button type="reset" class="btn btn-default">保存</button>
+		</form>
+
+	</div>
